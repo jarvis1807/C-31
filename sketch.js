@@ -1,3 +1,32 @@
+//types of data
+
+var name = "Aadyasha";
+console.log(name);
+
+var number = 50;
+console.log(number);
+
+var boolean = true;
+console.log(boolean);
+
+var object;
+console.log(object);
+
+object = null;
+console.log(object);
+
+var array1 = [name,number,50,object,"Text"]
+console.log(array1[0]);
+
+array1.push(75)
+console.log(array1);
+
+var array2 = [[1,2],[8,9]];
+console.log(array2[1][0])
+
+
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,7 +36,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
+var gamestate = "onsling"
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,12 +98,15 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gamestate === "onsling")
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gamestate = "launched"
 }
 
 function keyPressed(){
